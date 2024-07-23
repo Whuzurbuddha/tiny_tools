@@ -9,18 +9,15 @@ class VideoCreatorApp:
 
         self.image_paths = []
 
-        # Drag & Drop Bereich
         self.drop_area = tk.Label(root, text="Bilder hinzufügen", relief="sunken", width=50, height=10)
         self.drop_area.pack(pady=10)
         self.drop_area.bind("<Button-1>", self.open_file_dialog)
 
-        # Eingabefeld für die Zeit
         self.time_label = tk.Label(root, text="Gesamtdauer des Videos (Sekunden):")
         self.time_label.pack()
         self.time_entry = tk.Entry(root)
         self.time_entry.pack(pady=5)
 
-        # Ausführungsbutton
         self.execute_button = tk.Button(root, text="Video erstellen", command=self.create_video)
         self.execute_button.pack(pady=10)
 
