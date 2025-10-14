@@ -18,7 +18,7 @@ def set_camera_properties(cap):
 
 
 def main():
-    default_cam = 2
+    default_cam = 0
     cap = cv2.VideoCapture(default_cam)
 
     if not cap.isOpened():
@@ -38,7 +38,7 @@ def main():
         if not ret:
             print("Failed to grab frame.")
             break
-            
+
         image = cv2.rotate(frame, cv2.ROTATE_180)
         cv2.imshow('USB Camera', image)
         cv2.setWindowTitle('USB Camera', 'Microcam')
@@ -54,7 +54,7 @@ def main():
             resize(cap, factor)
         elif key == ord('s'):
             if not recording:
-                screenshot_filename = '/home/alexander/Bilder/science/screenshot.jpeg'
+                screenshot_filename = '$HOME/Bilder/screenshot.jpeg'
                 screenshot_dir = os.path.dirname(screenshot_filename)
 
                 if not os.path.exists(screenshot_dir):
@@ -78,7 +78,7 @@ def main():
 
         elif key == ord('v'):
             if not recording:
-                video_filename = '/home/alexander/Bilder/science/recording.avi'
+                video_filename = '$HOME/Videos/recording.avi'
                 video_writer = cv2.VideoWriter(video_filename, cv2.VideoWriter_fourcc(*'DIVX'), 20,
                                                (frame_width, frame_height))
                 recording = True
@@ -108,4 +108,5 @@ def main():
 
 
 if __name__ == "__main__":
+    os.environ["QT_QPA_PLATFORM"] = "xcb"
     main()
